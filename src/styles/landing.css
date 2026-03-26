@@ -1,0 +1,68 @@
+.landing {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 5vw;
+  text-align: center;
+}
+
+.landing-inner {
+  width: 100%;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+}
+
+.landing-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 7vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  text-shadow:
+    0 0 40px rgba(137,55,251,0.8),
+    0 0 80px rgba(90,4,211,0.5),
+    0 0 140px rgba(90,4,211,0.2);
+  user-select: none;
+}
+
+.landing-sub {
+  font-family: 'Jali Latin Variable', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.58rem, 1vw, 0.78rem);
+  letter-spacing: 0.55em;
+  color: rgba(137,55,251,0.65);
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.enter-btn {
+  background: transparent;
+  border: 1px solid rgba(137,55,251,0.4);
+  color: rgba(250,247,254,0.72);
+  font-family: 'Jali Latin Variable', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.65rem, 1vw, 0.82rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  padding: 14px 52px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.enter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 40px rgba(226,192,68,0.15), inset 0 0 16px rgba(226,192,68,0.04);
+}
+
+@media (max-width: 500px) {
+  .landing { padding: 60px 6vw; }
+}

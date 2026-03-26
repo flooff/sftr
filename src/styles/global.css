@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jali+Latin+Variable:wght@100..900&display=swap');
+
+:root {
+  --purple-dark: #5a04d3;
+  --purple:      #8937fb;
+  --gold:        #e2c044;
+  --black:       #272727;
+  --white:       #faf7fe;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #0a0614;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar { width: 3px; background: #0a0614; }
+::-webkit-scrollbar-thumb { background: var(--purple-dark); }
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  color: var(--white);
+  font-family: 'Jali Latin Variable', sans-serif;
+  background: radial-gradient(ellipse 200% 70% at 50% 0%, #180530 0%, #0a0614 55%);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.f1 { animation: fadeUp 0.85s ease both; }
+.f2 { animation: fadeUp 0.85s 0.18s ease both; opacity: 0; }
+.f3 { animation: fadeUp 0.85s 0.36s ease both; opacity: 0; }

@@ -1,0 +1,211 @@
+/* ── EMAIL ── */
+.email-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 340px;
+}
+.email-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  color: rgba(137,55,251,0.45);
+  text-transform: uppercase;
+}
+.email-row { display: flex; width: 100%; }
+.email-input {
+  flex: 1;
+  background: rgba(39,39,39,0.4);
+  border: none;
+  border-bottom: 1px solid rgba(137,55,251,0.22);
+  color: var(--white);
+  font-family: 'Jali Latin Variable', sans-serif;
+  font-size: 0.88rem;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.email-input::placeholder { color: rgba(137,55,251,0.22); }
+.email-input:focus { border-bottom-color: var(--purple); }
+.email-submit {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(137,55,251,0.22);
+  color: rgba(137,55,251,0.55);
+  font-family: 'Jali Latin Variable', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.email-submit:hover { color: var(--gold); border-bottom-color: var(--gold); }
+.email-ok { font-size: 0.8rem; color: var(--gold); letter-spacing: 0.1em; }
+
+/* ── EMAIL BLOCK ── */
+.email-block {
+  padding: 32px 36px;
+  border: 1px solid rgba(137,55,251,0.16);
+  background: rgba(39,39,39,0.18);
+  position: relative;
+  overflow: hidden;
+}
+.email-block::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+.email-block-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  letter-spacing: 0.14em;
+  color: var(--white);
+  margin-bottom: 5px;
+}
+.email-block-sub {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(250,247,254,0.28);
+  margin-bottom: 20px;
+}
+
+/* ── SHOWS ── */
+.show-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 12px;
+  border-bottom: 1px solid rgba(137,55,251,0.09);
+  gap: 20px;
+  flex-wrap: wrap;
+  transition: background 0.18s;
+  border-radius: 3px;
+}
+.show-row:hover { background: rgba(137,55,251,0.05); }
+.show-date {
+  font-family: 'Jali Latin Variable', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  min-width: 76px;
+}
+.show-info { flex: 1; min-width: 140px; }
+.show-venue { font-size: 0.98rem; font-weight: 400; color: var(--white); }
+.show-city {
+  font-size: 0.76rem;
+  font-weight: 300;
+  color: rgba(250,247,254,0.35);
+  margin-top: 2px;
+}
+.ticket-link {
+  display: inline-block;
+  padding: 7px 20px;
+  border: 1px solid rgba(137,55,251,0.32);
+  color: var(--purple);
+  font-family: 'Jali Latin Variable', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.22s;
+  white-space: nowrap;
+}
+.ticket-link:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(226,192,68,0.04);
+  box-shadow: 0 0 18px rgba(226,192,68,0.1);
+}
+
+/* ── VIDEOS ── */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 44px;
+}
+@media (max-width: 700px) {
+  .videos-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 701px) and (max-width: 999px) {
+  .videos-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.video-card {
+  cursor: pointer;
+  border: 1px solid rgba(137,55,251,0.16);
+  overflow: hidden;
+  background: #130920;
+  transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+}
+.video-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(226,192,68,0.09);
+}
+.video-thumb-wrap { position: relative; padding-top: 56.25%; overflow: hidden; }
+.video-thumb-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; opacity: 0.52; transition: opacity 0.22s;
+}
+.video-card:hover .video-thumb-img { opacity: 0.84; }
+.video-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10,6,20,0.32);
+  opacity: 0; transition: opacity 0.22s;
+}
+.video-card:hover .video-overlay { opacity: 1; }
+.play-circle {
+  width: 50px; height: 50px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 22px rgba(226,192,68,0.38);
+}
+.video-title {
+  padding: 11px 13px;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(250,247,254,0.42);
+  line-height: 1.45;
+}
+
+/* ── MODAL ── */
+.modal-bg {
+  position: fixed; inset: 0;
+  background: rgba(10,6,20,0.95);
+  z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  padding: 20px;
+}
+.modal-inner { width: 100%; max-width: 880px; cursor: default; }
+.modal-close {
+  color: rgba(137,55,251,0.42);
+  font-family: 'Jali Latin Variable', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: right;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--gold); }
+.iframe-wrap { position: relative; padding-top: 56.25%; }
+.iframe-wrap iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; border: none;
+}
+
+@media (max-width: 500px) {
+  .email-block { padding: 22px 18px; }
+  .ticket-link { padding: 7px 12px; }
+}

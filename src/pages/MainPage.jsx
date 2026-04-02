@@ -2,6 +2,8 @@ import { useState } from "react";
 import EmailForm from "../components/EmailForm";
 import { useShows } from "../hooks/useShows";
 import { useVideos } from "../hooks/useVideos";
+import logo from "../assets/sftr-logo.png";
+
 
 function Shows() {
   const { shows, loading } = useShows();
@@ -96,7 +98,11 @@ export default function MainPage({ onLogoClick, email, setEmail, submitted, onSu
     <div className="main">
       <div className="topbar">
         <div className="topbar-logo" onClick={onLogoClick}>
-          Shelter From Tha Rain
+          <img
+                      src={logo}
+                      alt="Shelter From Tha Rain"
+                      className="nav-logo"
+                    />
         </div>
         <nav className="topbar-nav">
           <button

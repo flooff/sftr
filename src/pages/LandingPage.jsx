@@ -1,11 +1,18 @@
 import EmailForm from "../components/EmailForm";
+import logo from "../assets/sftr.png";
 
 export default function LandingPage({ onEnter, email, setEmail, submitted, onSubmit }) {
   return (
     <div className="landing">
       <div className="landing-inner">
         <div className="f1">
-          <div className="landing-title">Shelter From<br />Tha Rain</div>
+          {/* <div className="landing-title">Shelter From<br />Tha Rain</div>
+           */}
+          <img
+            src={logo}
+            alt="Shelter From Tha Rain"
+            className="hero-logo"
+          />
           <div className="landing-sub">Enter The Storm</div>
         </div>
         <div className="f2 email-strip">

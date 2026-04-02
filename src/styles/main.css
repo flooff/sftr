@@ -32,7 +32,9 @@
   cursor: pointer;
   user-select: none;
 }
-
+.nav-logo{
+  width: 250px;
+}
 .topbar-nav { display: flex; gap: 36px; }
 
 .nav-btn {

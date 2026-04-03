@@ -14,8 +14,8 @@ export default function StormCanvas() {
     renderer.toneMappingExposure = 4.5;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x2d0a5e);
-    scene.fog = new THREE.FogExp2(0x2d0a5e, 0.0003);
+    scene.background = new THREE.Color(0x0d0320);
+    scene.fog = new THREE.FogExp2(0x0d0320, 0.0003);
 
     const camera = new THREE.PerspectiveCamera(
       60,
@@ -28,76 +28,83 @@ export default function StormCanvas() {
     camera.rotation.y = -0.12;
     camera.rotation.z = 0.27;
 
-    // Lights
+    // ── LIGHTS ──────────────────────────────────────────────────
     const ambient = new THREE.AmbientLight(0x4433aa, 8);
     scene.add(ambient);
 
-    const directionalLight = new THREE.DirectionalLight(0x3322cc, 6);
-    directionalLight.position.set(0, 0, 1);
-    scene.add(directionalLight);
+    const dirLight = new THREE.DirectionalLight(0x3322cc, 6);
+    dirLight.position.set(0, 0, 1);
+    scene.add(dirLight);
 
     const hemi = new THREE.HemisphereLight(0x3322cc, 0x110033, 5);
     scene.add(hemi);
 
-    // Flash lights
     const flash1 = new THREE.PointLight(0xffffff, 0, 1000, 1.5);
     const flash2 = new THREE.PointLight(0xe2c044, 0, 1000, 1.5);
     scene.add(flash1);
     scene.add(flash2);
 
-    // Screen flash mesh — covers entire view
-    const flashGeo = new THREE.PlaneGeometry(2, 2);
+    // ── SCREEN FLASH ────────────────────────────────────────────
     const flashMat = new THREE.MeshBasicMaterial({
       color: 0xffffff,
       transparent: true,
       opacity: 0,
       depthTest: false,
     });
-    const flashScreen = new THREE.Mesh(flashGeo, flashMat);
-    flashScreen.renderOrder = 999;
-    const flashCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const flashScreen = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), flashMat);
     const flashScene = new THREE.Scene();
+    const flashCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
     flashScene.add(flashScreen);
 
-    // Rain
-    const rainCount = 30000;
-    const rainGeo = new THREE.BufferGeometry();
-    const rainPositions = new Float32Array(rainCount * 3);
-    for (let i = 0; i < rainCount * 3; i += 3) {
-      rainPositions[i]     = Math.random() * 800 - 400;
-      rainPositions[i + 1] = Math.random() * 600 - 300;
-      rainPositions[i + 2] = Math.random() * 800 - 400;
-    }
-    rainGeo.setAttribute("position", new THREE.BufferAttribute(rainPositions, 3));
-    const rainMaterial = new THREE.PointsMaterial({
-      color: 0xbaaeff,
-      size: 0.15,
-      transparent: true,
-      opacity: 0.4,
-    });
-    const rain = new THREE.Points(rainGeo, rainMaterial);
-    scene.add(rain);
+    // ── RAIN ────────────────────────────────────────────────────
+    const rainCount = 8000;
+    const rainPositions = new Float32Array(rainCount * 6);
+    const rainVelocities = new Float32Array(rainCount);
+    const rainLengths = new Float32Array(rainCount);
 
-    // Clouds — doubled count, spread across all angles
+    for (let i = 0; i < rainCount; i++) {
+      const x = Math.random() * 1200 - 600;
+      const y = Math.random() * 800 - 400;
+      const z = Math.random() * 800 - 400;
+      const vel = Math.random() * 4 + 3;
+      const len = vel * 2.5;
+
+      rainVelocities[i] = vel;
+      rainLengths[i] = len;
+
+      rainPositions[i * 6]     = x;
+      rainPositions[i * 6 + 1] = y;
+      rainPositions[i * 6 + 2] = z;
+      rainPositions[i * 6 + 3] = x - len * 0.12;
+      rainPositions[i * 6 + 4] = y - len;
+      rainPositions[i * 6 + 5] = z;
+    }
+
+    const rainGeo = new THREE.BufferGeometry();
+    rainGeo.setAttribute("position", new THREE.BufferAttribute(rainPositions, 3));
+    const rainMat = new THREE.LineBasicMaterial({
+      color: 0xaaccff,
+      transparent: true,
+      opacity: 0.45,
+    });
+    const rainMesh = new THREE.LineSegments(rainGeo, rainMat);
+    scene.add(rainMesh);
+
+    // ── CLOUDS ──────────────────────────────────────────────────
     const cloudParticles = [];
     const loader = new THREE.TextureLoader();
     loader.load("https://i.imgur.com/usgGGX5.png", (texture) => {
-      const cloudGeo = new THREE.PlaneGeometry(500, 500);
-      const cloudMaterial = new THREE.MeshLambertMaterial({
+      const cloudGeo = new THREE.PlaneGeometry(700, 700);
+      const cloudMat = new THREE.MeshLambertMaterial({
         map: texture,
         transparent: true,
       });
-
-      for (let p = 0; p < 120; p++) {
-        const cloud = new THREE.Mesh(cloudGeo, cloudMaterial.clone());
-
-        // Spread across full 360 — front, back, sides
-        const angle = (p / 120) * Math.PI * 2;
-        const radius = Math.random() * 400 + 100;
+      for (let p = 0; p < 200; p++) {
+        const cloud = new THREE.Mesh(cloudGeo, cloudMat.clone());
         cloud.position.set(
-          Math.cos(angle) * radius,
+          Math.random() * 1200 - 600,
           500,
-          Math.sin(angle) * radius - 200
+          Math.random() * 1200 - 600
         );
         cloud.rotation.x = 1.16;
         cloud.rotation.y = -0.12;
@@ -108,7 +115,7 @@ export default function StormCanvas() {
       }
     });
 
-    // Resize
+    // ── RESIZE ──────────────────────────────────────────────────
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -116,9 +123,8 @@ export default function StormCanvas() {
     };
     window.addEventListener("resize", handleResize);
 
-    // Animation
+    // ── ANIMATION ───────────────────────────────────────────────
     let animId;
-    const rainPos = rainGeo.attributes.position.array;
     let flashTimer = 60;
     let isFlashing = false;
     let flashFrames = 0;
@@ -127,19 +133,35 @@ export default function StormCanvas() {
     const animate = () => {
       animId = requestAnimationFrame(animate);
 
-      // Rotate clouds
+      // Clouds
       cloudParticles.forEach(p => {
         p.rotation.z -= 0.002;
       });
 
-      // Rain fall
-      for (let i = 1; i < rainCount * 3; i += 3) {
-        rainPos[i] -= 0.15;
-        if (rainPos[i] < -200) rainPos[i] = 200;
+      // Rain
+      const pos = rainGeo.attributes.position.array;
+      for (let i = 0; i < rainCount; i++) {
+        const vel = rainVelocities[i];
+        const len = rainLengths[i];
+
+        pos[i * 6]     -= vel * 0.12;
+        pos[i * 6 + 1] -= vel;
+        pos[i * 6 + 3] -= vel * 0.12;
+        pos[i * 6 + 4] -= vel;
+
+        if (pos[i * 6 + 1] < -400) {
+          const x = Math.random() * 1200 - 600;
+          const y = 400 + Math.random() * 200;
+          const z = Math.random() * 800 - 400;
+          pos[i * 6]     = x;
+          pos[i * 6 + 1] = y;
+          pos[i * 6 + 2] = z;
+          pos[i * 6 + 3] = x - len * 0.12;
+          pos[i * 6 + 4] = y - len;
+          pos[i * 6 + 5] = z;
+        }
       }
       rainGeo.attributes.position.needsUpdate = true;
-      rain.rotation.y += 0.0005;
-      rain.rotation.x += 0.0002;
 
       // Lightning
       flashTimer--;
@@ -180,14 +202,11 @@ export default function StormCanvas() {
         }
       }
 
-      // Screen flash overlay
       flashMat.opacity = screenFlashOpacity;
 
-      // Render main scene
       renderer.autoClear = true;
       renderer.render(scene, camera);
 
-      // Render screen flash on top
       if (screenFlashOpacity > 0.01) {
         renderer.autoClear = false;
         renderer.render(flashScene, flashCam);

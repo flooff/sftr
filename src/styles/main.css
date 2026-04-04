@@ -10,24 +10,11 @@
 .app {
   width: 100%;
   min-height: 100vh;
-  color: #0d0320;
+  color: #ffffff;
   font-family: 'Barlow', sans-serif;
   background: transparent;
-}
-.topbar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 5vw 16px;
-  flex-wrap: wrap;
-  gap: 16px;
-  border-bottom: 1px solid rgba(0,0,0,0.15);
-  backdrop-filter: blur(4px);
-  background: rgba(0,0,0,0.35);
-  position: sticky;
-  top: 0;
-  z-index: 20;
+  position: relative;
+  z-index: 2;
 }
 .topbar-logo {
   font-family: 'Russo One', sans-serif;

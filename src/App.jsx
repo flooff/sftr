@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { supabase } from "./lib/supabase";
-import { lazy, Suspense } from "react";
 import VideoModal from "./components/VideoModal";
 import LandingPage from "./pages/LandingPage";
 import MainPage from "./pages/MainPage";
@@ -12,8 +11,8 @@ import "./styles/main.css";
 import "./styles/components.css";
 import "./styles/admin.css";
 
-const isAdmin = window.location.pathname === "/admin";
 const StormCanvas = lazy(() => import("./components/StormCanvas"));
+const isAdmin = window.location.pathname === "/admin";
 
 export default function App() {
   const [page, setPage]               = useState("landing");
@@ -32,8 +31,10 @@ export default function App() {
   if (isAdmin) return <AdminPanel />;
 
   return (
-    <div className="app" style={{ position: "relative", zIndex: 2 }}>
-      <StormCanvas />
+    <div className="app">
+      <Suspense fallback={null}>
+        <StormCanvas />
+      </Suspense>
       {page === "landing" && (
         <LandingPage
           onEnter={() => setPage("main")}
@@ -50,7 +51,7 @@ export default function App() {
         />
       )}
       <VideoModal video={activeVideo} onClose={() => setActiveVideo(null)} />
-        <AudioPlayer />
+      <AudioPlayer />
     </div>
   );
 }

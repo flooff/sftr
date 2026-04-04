@@ -32,7 +32,7 @@ export default function App() {
   if (isAdmin) return <AdminPanel />;
 
   return (
-    <div className="app">
+    <div className="app" style={{ position: "relative", zIndex: 2 }}>
       <StormCanvas />
       {page === "landing" && (
         <LandingPage

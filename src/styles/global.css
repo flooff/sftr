@@ -35,6 +35,8 @@ body {
   color: #0d0320;
   font-family: 'Barlow', sans-serif;
   background: transparent;
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes fadeUp {

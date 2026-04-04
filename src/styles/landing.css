@@ -58,6 +58,7 @@
   transition: all 0.3s;
   backdrop-filter: blur(8px);
 }
+
 .enter-btn:hover {
   background: #e2c044;
   color: #0d0320;
@@ -65,4 +66,67 @@
 }
 
 .email-strip {
-  d
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 340px;
+}
+
+.email-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  color: rgba(255,255,255,0.85);
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.email-row { display: flex; width: 100%; }
+
+.email-input {
+  flex: 1;
+  background: rgba(0,0,0,0.35);
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  color: #ffffff;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.88rem;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.email-input::placeholder { color: rgba(255,255,255,0.4); }
+.email-input:focus { border-bottom-color: #e2c044; }
+
+.email-submit {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.8);
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.email-submit:hover { color: #e2c044; border-bottom-color: #e2c044; }
+.email-ok { font-size: 0.82rem; color: #e2c044; letter-spacing: 0.1em; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.f1 { animation: fadeUp 0.85s ease both; }
+.f2 { animation: fadeUp 0.85s 0.18s ease both; opacity: 0; }
+.f3 { animation: fadeUp 0.85s 0.36s ease both; opacity: 0; }
+
+@media (max-width: 500px) {
+  .landing { padding: 60px 6vw; }
+  .hero-logo { max-width: 320px; }
+}

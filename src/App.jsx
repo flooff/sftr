@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "./lib/supabase";
-import StormCanvas from "./components/StormCanvas";
+import { lazy, Suspense } from "react";
 import VideoModal from "./components/VideoModal";
 import LandingPage from "./pages/LandingPage";
 import MainPage from "./pages/MainPage";
@@ -13,6 +13,7 @@ import "./styles/components.css";
 import "./styles/admin.css";
 
 const isAdmin = window.location.pathname === "/admin";
+const StormCanvas = lazy(() => import("./components/StormCanvas"));
 
 export default function App() {
   const [page, setPage]               = useState("landing");

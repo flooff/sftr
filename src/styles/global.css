@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jali+Latin+Variable:wght@100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow:wght@300;400;600&display=swap&font-display=swap');
 :root {
   --purple-dark: #5a04d3;
   --purple:      #8937fb;
@@ -33,9 +32,9 @@ body {
 .app {
   width: 100%;
   min-height: 100vh;
-  color: var(--white);
-  font-family: 'Jali Latin Variable', sans-serif;
-  background: radial-gradient(ellipse 200% 70% at 50% 0%, #180530 0%, #0a0614 55%);
+  color: #0d0320;
+  font-family: 'Barlow', sans-serif;
+  background: transparent;
 }
 
 @keyframes fadeUp {

@@ -21,56 +21,48 @@
   text-align: center;
 }
 
-/* .landing-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3.5rem, 7vw, 8rem);
-  line-height: 0.95;
-  letter-spacing: 0.04em;
-  color: var(--white);
-  text-shadow:
-    0 0 40px rgba(137,55,251,0.8),
-    0 0 80px rgba(90,4,211,0.5),
-    0 0 140px rgba(90,4,211,0.2);
-  user-select: none;
-} */
-
 .hero-logo {
-  width: 400px;
-  max-width: 90%;
+  width: 100%;
+  max-width: 480px;
   height: auto;
+  filter:
+    drop-shadow(0 0 40px rgba(0,0,0,0.7))
+    drop-shadow(0 0 80px rgba(0,0,0,0.5));
+  user-select: none;
   display: block;
   margin: 0 auto;
 }
 
 .landing-sub {
-  font-family: 'Jali Latin Variable', sans-serif;
-  font-weight: 300;
-  font-size: clamp(0.58rem, 1vw, 0.78rem);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.65rem, 1.2vw, 0.88rem);
   letter-spacing: 0.55em;
-  color: rgba(249, 249, 253, 0.65);
+  color: rgba(255,255,255,0.9);
   text-transform: uppercase;
-  margin-top: 6px;
+  margin-top: 8px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
 }
 
 .enter-btn {
-  background: transparent;
-  border: 1px solid rgba(137,55,251,0.4);
-  color: rgba(250,247,254,0.72);
-  font-family: 'Jali Latin Variable', sans-serif;
-  font-weight: 400;
-  font-size: clamp(0.65rem, 1vw, 0.82rem);
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(226,192,68,0.8);
+  color: #e2c044;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.65rem, 1vw, 0.85rem);
   letter-spacing: 0.35em;
   text-transform: uppercase;
   padding: 14px 52px;
   cursor: pointer;
   transition: all 0.3s;
+  backdrop-filter: blur(8px);
 }
 .enter-btn:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  box-shadow: 0 0 40px rgba(226,192,68,0.15), inset 0 0 16px rgba(226,192,68,0.04);
+  background: #e2c044;
+  color: #0d0320;
+  box-shadow: 0 0 40px rgba(226,192,68,0.4);
 }
 
-@media (max-width: 500px) {
-  .landing { padding: 60px 6vw; }
-}
+.email-strip {
+  d

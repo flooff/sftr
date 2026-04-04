@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shelter-from-tha-rain.netlify.app/sitemap.xml

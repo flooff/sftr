@@ -5,6 +5,7 @@ import VideoModal from "./components/VideoModal";
 import LandingPage from "./pages/LandingPage";
 import MainPage from "./pages/MainPage";
 import AdminPanel from "./pages/admin/AdminPanel";
+import AudioPlayer from "./components/AudioPlayer";
 import "./styles/global.css";
 import "./styles/landing.css";
 import "./styles/main.css";
@@ -48,6 +49,7 @@ export default function App() {
         />
       )}
       <VideoModal video={activeVideo} onClose={() => setActiveVideo(null)} />
+        <AudioPlayer />
     </div>
   );
 }

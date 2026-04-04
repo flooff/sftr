@@ -93,7 +93,7 @@ export default function StormCanvas() {
     // ── CLOUDS ──────────────────────────────────────────────────
     const cloudParticles = [];
     const loader = new THREE.TextureLoader();
-    loader.load("https://i.imgur.com/usgGGX5.png", (texture) => {
+    loader.load("/cloud.png", (texture) => {
       const cloudGeo = new THREE.PlaneGeometry(700, 700);
       const cloudMat = new THREE.MeshLambertMaterial({
         map: texture,

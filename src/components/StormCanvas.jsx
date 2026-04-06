@@ -57,7 +57,7 @@ export default function StormCanvas() {
     flashScene.add(flashScreen);
 
     // ── RAIN ────────────────────────────────────────────────────
-    const rainCount = 8000;
+    const rainCount = 4000;
     const rainPositions = new Float32Array(rainCount * 6);
     const rainVelocities = new Float32Array(rainCount);
     const rainLengths = new Float32Array(rainCount);
@@ -99,7 +99,7 @@ export default function StormCanvas() {
         map: texture,
         transparent: true,
       });
-      for (let p = 0; p < 200; p++) {
+      for (let p = 0; p < 60; p++) {
         const cloud = new THREE.Mesh(cloudGeo, cloudMat.clone());
         cloud.position.set(
           Math.random() * 1200 - 600,

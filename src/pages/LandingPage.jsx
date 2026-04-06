@@ -1,5 +1,5 @@
 import EmailForm from "../components/EmailForm";
-import logo from "../assets/sftr.png";
+import logo from "../assets/sftr.webp";
 
 export default function LandingPage({ onEnter, email, setEmail, submitted, onSubmit }) {
   return (
@@ -12,6 +12,8 @@ export default function LandingPage({ onEnter, email, setEmail, submitted, onSub
             src={logo}
             alt="Shelter From Tha Rain"
             className="hero-logo"
+            width="480"
+            height="578"
           />
           <div className="landing-sub">Enter The Storm</div>
         </div>

@@ -14,8 +14,8 @@ export default function StormCanvas() {
     renderer.toneMappingExposure = 4.5;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0d0320);
-    scene.fog = new THREE.FogExp2(0x0d0320, 0.0003);
+    scene.background = new THREE.Color(0x08011a);
+    scene.fog = new THREE.FogExp2(0x08011a, 0.0002);
 
     const camera = new THREE.PerspectiveCamera(
       60,
@@ -29,14 +29,14 @@ export default function StormCanvas() {
     camera.rotation.z = 0.27;
 
     // ── LIGHTS ──────────────────────────────────────────────────
-    const ambient = new THREE.AmbientLight(0x4433aa, 8);
+    const ambient = new THREE.AmbientLight(0x4433aa, 6);
     scene.add(ambient);
 
-    const dirLight = new THREE.DirectionalLight(0x3322cc, 6);
+    const dirLight = new THREE.DirectionalLight(0x3322cc, 5);
     dirLight.position.set(0, 0, 1);
     scene.add(dirLight);
 
-    const hemi = new THREE.HemisphereLight(0x3322cc, 0x110033, 5);
+    const hemi = new THREE.HemisphereLight(0x3322cc, 0x08011a, 4);
     scene.add(hemi);
 
     const flash1 = new THREE.PointLight(0xffffff, 0, 1000, 1.5);
@@ -99,7 +99,7 @@ export default function StormCanvas() {
         map: texture,
         transparent: true,
       });
-      for (let p = 0; p < 60; p++) {
+      for (let p = 0; p < 40; p++) {
         const cloud = new THREE.Mesh(cloudGeo, cloudMat.clone());
         cloud.position.set(
           Math.random() * 1200 - 600,
@@ -109,7 +109,7 @@ export default function StormCanvas() {
         cloud.rotation.x = 1.16;
         cloud.rotation.y = -0.12;
         cloud.rotation.z = Math.random() * Math.PI * 2;
-        cloud.material.opacity = 0.85;
+        cloud.material.opacity = 0.55;
         cloudParticles.push(cloud);
         scene.add(cloud);
       }

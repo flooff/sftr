@@ -1,6 +1,5 @@
 import EmailForm from "../components/EmailForm";
-import logo from "../assets/sftr.webp";
-
+import logo from "../assets/sftr-new.webp";
 export default function LandingPage({ onEnter, email, setEmail, submitted, onSubmit }) {
   return (
     <div className="landing">

@@ -25,7 +25,8 @@
 }
 
 .admin-topbar-title {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Genos', sans-serif;
+  font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: 0.16em;
   color: #faf7fe;
@@ -70,7 +71,8 @@
 }
 
 .admin-section-title {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Genos', sans-serif;
+  font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: 0.14em;
   color: #faf7fe;
@@ -112,7 +114,8 @@
 }
 
 .admin-form-title {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Genos', sans-serif;
+  font-weight: 700;
   font-size: 1rem;
   letter-spacing: 0.14em;
   color: rgba(250, 247, 254, 0.5);

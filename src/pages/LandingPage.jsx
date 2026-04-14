@@ -25,7 +25,7 @@ export default function LandingPage({ onEnter, email, setEmail, submitted, onSub
           />
         </div>
         <button className="f3 enter-btn" onClick={onEnter}>
-          Enter The Storm
+          Enter 
         </button>
       </div>
     </div>

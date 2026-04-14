@@ -11,17 +11,13 @@
   text-align: center;
 }
 
-.hero-logo {
+.landing-inner {
   width: 100%;
-  max-width: 480px;
-  height: auto;
-  filter:
-    drop-shadow(0 0 40px rgba(0,0,0,0.7))
-    drop-shadow(0 0 80px rgba(0,0,0,0.5));
-  user-select: none;
-  display: block;
-  margin: 0 auto;
-  mix-blend-mode: screen;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
 }
 
 .hero-logo {
@@ -34,6 +30,7 @@
   user-select: none;
   display: block;
   margin: 0 auto;
+  mix-blend-mode: screen;
 }
 
 .landing-sub {
@@ -61,7 +58,6 @@
   transition: all 0.3s;
   backdrop-filter: blur(8px);
 }
-
 .enter-btn:hover {
   background: #e2c044;
   color: #0d0320;
@@ -76,7 +72,6 @@
   width: 100%;
   max-width: 340px;
 }
-
 .email-label {
   font-size: 0.62rem;
   letter-spacing: 0.28em;
@@ -84,32 +79,29 @@
   text-transform: uppercase;
   text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
-
 .email-row { display: flex; width: 100%; }
-
 .email-input {
   flex: 1;
-  background: rgba(0,0,0,0.35);
+  background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
   color: #ffffff;
   font-family: 'Barlow', sans-serif;
   font-size: 0.88rem;
-  padding: 10px 12px;
+  padding: 10px 0;
   outline: none;
   transition: border-color 0.2s;
 }
-
-.email-input::placeholder { color: rgba(255,255,255,0.4); }
+.email-input::placeholder { color: rgba(255,255,255,0.3); }
 .email-input:focus { border-bottom-color: #e2c044; }
-
 .email-submit {
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.5);
-  color: rgba(255,255,255,0.8);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.7);
   font-family: 'Barlow', sans-serif;
   font-size: 0.7rem;
+  font-weight: 700;
   letter-spacing: 0.2em;
   padding: 10px 16px;
   cursor: pointer;
@@ -117,7 +109,6 @@
   text-transform: uppercase;
   white-space: nowrap;
 }
-
 .email-submit:hover { color: #e2c044; border-bottom-color: #e2c044; }
 .email-ok { font-size: 0.82rem; color: #e2c044; letter-spacing: 0.1em; }
 
@@ -131,5 +122,6 @@
 
 @media (max-width: 500px) {
   .landing { padding: 60px 6vw; }
-  .hero-logo { max-width: 320px; }
+  .hero-logo { max-width: 300px; }
+  .enter-btn { padding: 12px 32px; }
 }

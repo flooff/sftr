@@ -6,6 +6,7 @@ import MainPage from "./pages/MainPage";
 import AdminPanel from "./pages/admin/AdminPanel";
 import AudioPlayer from "./components/AudioPlayer";
 import LoadingScreen from "./components/LoadingScreen";
+import AdminLogin from "./pages/admin/AdminLogin";
 import "./styles/global.css";
 import "./styles/landing.css";
 import "./styles/main.css";
@@ -30,7 +31,12 @@ export default function App() {
     setEmail("");
   };
 
-  if (isAdmin) return <AdminPanel />;
+  if (isAdmin) {
+    const authed = sessionStorage.getItem("sftr_admin");
+    const [adminAuthed, setAdminAuthed] = useState(!!authed);
+    if (!adminAuthed) return <AdminLogin onAuth={() => setAdminAuthed(true)} />;
+    return <AdminPanel />;
+  }
 
   return (
     <div className="app">

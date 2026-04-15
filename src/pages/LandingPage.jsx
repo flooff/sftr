@@ -14,7 +14,7 @@ export default function LandingPage({ onEnter, email, setEmail, submitted, onSub
             width="480"
             height="578"
           />
-          <div className="landing-sub">The Perfect Srorm</div>
+          <div className="landing-sub">Tha Perfect Storm</div>
         </div>
         <div className="f2 email-strip">
           <div className="email-label">Stay in the loop</div>
